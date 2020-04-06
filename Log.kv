@@ -1,0 +1,91 @@
+<LogPage>:
+    id:log
+    user: user
+    password: password
+    email: email
+    orientation: "horizontal"
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba:(1,1,1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        canvas.before:
+            Color:
+                rgba:(.06, .45, .60, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text:"First.impact"
+            blod: True
+            size_hint_x: .9
+
+            MDIconButton:
+                icon: "language-python"
+
+    BoxLayout:
+        pos_hint: {'y': 0.3}
+        size_hint_y: 0.3
+        height: 500
+        orientation: "vertical"
+        padding: log.space_x, 10
+        spacing: 20
+        BoxLayout :
+            pos_hint: {'y': -1}
+            pos_hint: {'x': 0}
+            orientation: "vertical"
+            spacing: 10
+            size_hint_y: None
+            height: 240
+            Label:
+                pos_hint: {'x': 0}
+                id:etat
+                text:''
+                markup: True
+                size_hint_y: None
+                height: 20
+            TextInput :
+                hint_text:"User or mail"
+                multiline:False
+                id:user
+                focus: True
+                on_text_validate : password.focus = True
+            TextInput:
+                hint_text:"password"
+                id: password
+                multiline:False
+                password :True
+                on_text_validate : root.btn1()
+            TextInput:
+                hint_text: "First4impact@gmail.com"
+                multiline:False
+                id:email
+
+            MDIconButton:
+                icon: "check"
+                pos_hint: {'x': .35}
+                text:"Connexion"
+                on_release:
+                    root.btn1()
+                id: btn1
+                background_normal: ''
+                font_size: 20
+                color:1, 1, 1, 1
+                size_hint_y: None
+                height: 40
+            Button:
+                on_release:
+                    root.manager.current = "RegPage"
+                id:btn2
+                background_color: (.06, .45, .60, 1)
+                background_normal: ''
+                font_size: 20
+                color:1, 1, 1, 1
+                text:"Inscription"
+                size_hint_y: None
+                height: 40

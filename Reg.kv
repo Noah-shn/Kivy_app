@@ -1,0 +1,102 @@
+<RegPage>:
+    user:user
+    prenom:prenom
+    email:email
+    password:password
+
+    name:"second"
+    orientation: "horizontal"
+    canvas.before:
+        Color:
+            rgba:(1,1,1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        canvas.before:
+            Color:
+                rgba:(.06, .45, .55, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text:"Inscription"
+            blod: True
+            size_hint_x: .1
+
+    BoxLayout:
+        pos_hint: {'y': 0.3}
+
+        height: 500
+        orientation: "vertical"
+        spacing: 20
+
+        BoxLayout :
+            pos_hint: {'y': 0.3 }
+            pos_hint: {'x': 0.3}
+            orientation: "vertical"
+            spacing: 10
+            size_hint_y: None
+            height: 300
+
+
+
+        	TextInput:
+        	    size_hint_x: 0.3
+		        hint_text: "Noms"
+                id:user
+                multiline: False
+		        focus: True
+		        on_text_validate : prenom.focus = True
+
+            TextInput:
+                size_hint_x: 0.3
+                hint_text:"Prenoms"
+		        id: prenom
+                multiline:False
+		        on_text_validate :
+		            password.focus = True
+
+            TextInput:
+                size_hint_x: 0.3
+                hint_text: " Password "
+                id:password
+                multiline:False
+                password:True
+		        on_text_validate : email.focus = True
+
+
+            TextInput:
+                size_hint_x: 0.3
+		        hint_text: " Email "
+                id:email
+                multiline:False
+		        on_text_validate :
+                    app.root.current = "LogPage"
+                    root.btn2()
+
+	        Button:
+        	    size_hint:0.3,0.3
+                id : btn2
+                text: "valider"
+                on_press:
+                    app.root.current = "LogPage"
+                    root.btn2()
+	            background_color: (.06, .45, .55, 1)
+                background_normal: ''
+                font_size: 20
+                size_hint_y: None
+                height: 40
+
+	        Button:
+        	    on_release:
+                    app.root.current = "LogPage"
+                text:"Retours"
+                size_hint:0.3,0.3
+	    	    background_color: (.06, .45, .55, 1)
+                background_normal: ''
+                font_size: 20
+                size_hint_y: None
+                height: 40
