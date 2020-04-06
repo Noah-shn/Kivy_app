@@ -1,0 +1,49 @@
+<Account>:
+    rv: rv
+    name:"third"
+    canvas.before:
+        Color:
+            rgba: (.06, .45, .55, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        cols:2
+        orientation: 'vertical'
+        MDTextField:
+            id: search_field
+            hint_text: 'Que cherchez vous ?'
+
+        BoxLayout:
+            orientation: 'vertical'
+            pos: self.pos
+            size_hint: 0.2,0.15
+
+            MDIconButton:
+                icon:'arrow-left-bold-circle'
+                id : btn3
+                text: "Valider"
+                on_press: app.root.current="LogPage"
+
+            MDIconButton:
+                icon: "animation"
+                id : btn5
+                text:"categories"
+                on_press:
+                    root.add_icon_item()
+
+        BoxLayout:
+            cols:1
+            RecycleView:
+                id: rv
+                data:[]
+                viewclass: 'Button'
+                RecycleBoxLayout:
+                    default_size_hint: 1, None
+                    orientation: 'vertical'
+<MyButton>:
+    rgba:(.06, .45, .99, 1)
+    on_press:
+        root.get_to()
+
+
