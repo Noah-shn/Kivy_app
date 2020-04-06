@@ -27,6 +27,4 @@ class MyButton(Button):
 
         pass
 
-        #  def print_data(self, text):
-        #  print(text)
-        # print(categorie)
+
